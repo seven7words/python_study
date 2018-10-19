@@ -9,8 +9,9 @@ class DownloadHanlder(Thread):
         self.url = url
     def run(self):
         filename = self.url[self.url.rfind('/')+1:]
+        print(filename)
         resp = requests.get(self.url)
-        with open('/Users/Hao/' + filename, 'wb') as f:
+        with open('D:\MyTest\\' + filename, 'wb') as f:
             f.write(resp.content)
 
 def main():
@@ -19,7 +20,7 @@ def main():
     # 要使用该数据接口需要在天行数据的网站上注册
     # 然后用自己的Key替换掉下面代码的中APIKey即可
     resp = requests.get(
-        'http://api.tianapi.com/meinv/?key=APIKey&num=10')
+        'http://api.tianapi.com/meinv/?key=4598668caf133ff3251a8293d7dddf52&num=10')
     # 将服务器返回的JSON格式的数据解析为字典
     data_model = resp.json()
     for mm_dict in data_model['newslist']:
